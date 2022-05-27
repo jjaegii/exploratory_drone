@@ -12,11 +12,12 @@ app.listen(3000, () => {
 })
 
 app.get("/", (req,res) => {
+	console.log(req.ip + "에서 접속");
 	res.redirect('control');
 });
 
 app.get("/control", (req,res) => {
-	fs.readFile('index.html', (error, data) => {
+	fs.readFile('control.html', (error, data) => {
 		if(error) {
 			console.log('error : ' + error);
 		}
@@ -25,20 +26,22 @@ app.get("/control", (req,res) => {
 			res.end(data);
 		}
 	})
-})
+});
 
 app.get("/up", (req,res) => {
-	exec('python3 ./gpio/led_on.py on',
-	function() {
-		console.log("up");
-	});
+	exec('python3 ./gpio/led_on.py on');
 });
 
 app.get("/down", (req,res) => {
-	exec('python3 ./gpio/led_on.py off',
-	function() {
-		console.log("down");
-	});
+	exec('python3 ./gpio/led_on.py off');
+});
+
+app.get("/left", (req,res) => {
+	exec('python3 ./gpio/servo.py 4');
+});
+
+app.get("/right", (req,res) => {
+	exec('python3 ./gpio/servo.py 11');
 });
 
 var child = exec('./mjpg.sh', 

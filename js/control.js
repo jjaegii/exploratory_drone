@@ -27,6 +27,8 @@ downArrow.addEventListener("mouseup", function () {
 
 leftArrow.addEventListener("mousedown", function () {
     leftArrow.src = "img/clickedLeftArrow.png";
+    httpRequest.open("GET", "/left", true);
+    httpRequest.send();
 })
 
 leftArrow.addEventListener("mouseup", function () {
@@ -35,6 +37,8 @@ leftArrow.addEventListener("mouseup", function () {
 
 rightArrow.addEventListener("mousedown", function () {
     rightArrow.src = "img/clickedRightArrow.png";
+    httpRequest.open("GET", "/right", true);
+    httpRequest.send();
 })
 
 rightArrow.addEventListener("mouseup", function () {
@@ -49,6 +53,8 @@ function keyDownHandler(e) {
     switch (e.keyCode) {
         case 37:
             leftArrow.src = "img/clickedLeftArrow.png";
+            httpRequest.open("GET", "/left", true);
+            httpRequest.send();
             break;
         case 38:
             upArrow.src = "img/clickedUpArrow.png";
@@ -57,6 +63,8 @@ function keyDownHandler(e) {
             break;
         case 39:
             rightArrow.src = "img/clickedRightArrow.png";
+            httpRequest.open("GET", "/right", true);
+            httpRequest.send();
             break;
         case 40:
             downArrow.src = "img/clickedDownArrow.png";

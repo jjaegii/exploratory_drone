@@ -11,7 +11,6 @@ GPIO.setup(n,GPIO.OUT)
 
 if(sys.argv[1]=="on"):
     GPIO.output(n,True)
-    GPIO.cleanup()
+    #GPIO.cleanup()
 else:
-    GPIO.output(n,False)
     GPIO.cleanup()
