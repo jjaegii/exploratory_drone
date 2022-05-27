@@ -17,7 +17,7 @@ pwm.start(3.0)
 
 pwm.ChangeDutyCycle(float(sys.argv[1]))   # 서보모터를 0도로 회전(이동)
 time.sleep(1.0)   
-pwm.ChangeDutyCycle(0.0)
+#pwm.ChangeDutyCycle(0.0)
 
 pwm.stop()
 GPIO.cleanup()
