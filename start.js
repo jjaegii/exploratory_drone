@@ -28,20 +28,20 @@ app.get("/control", (req,res) => {
 })
 
 app.get("/up", (req,res) => {
-	exec('python3 /home/pi/led_on.py on',
+	exec('python3 ./gpio/led_on.py on',
 	function() {
 		console.log("up");
 	});
 });
 
 app.get("/down", (req,res) => {
-	exec('python3 /home/pi/led_on.py off',
+	exec('python3 ./gpio/led_on.py off',
 	function() {
 		console.log("down");
 	});
 });
 
-var child = exec('/home/pi/nodejs/mjpg.sh', 
+var child = exec('./mjpg.sh', 
 	function() {
 		console.log('camera on');
 });
