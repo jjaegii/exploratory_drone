@@ -16,5 +16,13 @@
     "탐사드론"
   ],
   "author": "최재혁",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjaegii/exploratory_drone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jjaegii/exploratory_drone/issues"
+  },
+  "homepage": "https://github.com/jjaegii/exploratory_drone#readme"
 }
