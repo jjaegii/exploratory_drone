@@ -1,8 +1,16 @@
 var httpRequest = new XMLHttpRequest();
+
 var upArrow = document.querySelector('#upArrow');
 var downArrow = document.querySelector('#downArrow');
 var leftArrow = document.querySelector('#leftArrow');
 var rightArrow = document.querySelector('#rightArrow');
+
+var armUp = document.querySelector("#armUp");
+var armDown = document.querySelector("#armDown");
+var armLeft = document.querySelector("#armLeft");
+var armRight = document.querySelector("#armRight");
+var armCatch = document.querySelector("#armCatch");
+var isCatch = 0; // 1이면 catch인 상태, 0이면 release인 상태
 
 // 마우스 이벤트
 upArrow.addEventListener("mousedown", function () {
@@ -45,6 +53,61 @@ rightArrow.addEventListener("mouseup", function () {
     rightArrow.src = "img/rightArrow.png";
 })
 
+armUp.addEventListener("mousedown", function () {
+    armUp.src = "img/clickedArmUp.png";
+    httpRequest.open("GET", "/armUp", true);
+    httpRequest.send();
+})
+
+armUp.addEventListener("mouseup", function () {
+    armUp.src = "img/armUp.png";
+})
+
+armDown.addEventListener("mousedown", function () {
+    armDown.src = "img/clickedArmDown.png";
+    httpRequest.open("GET", "/armDown", true);
+    httpRequest.send();
+})
+
+armDown.addEventListener("mouseup", function () {
+    armDown.src = "img/armDown.png";
+})
+
+armLeft.addEventListener("mousedown", function () {
+    armLeft.src = "img/clickedArmLeft.png";
+    httpRequest.open("GET", "/armLeft", true);
+    httpRequest.send();
+})
+
+armLeft.addEventListener("mouseup", function () {
+    armLeft.src = "img/armLeft.png";
+})
+
+armRight.addEventListener("mousedown", function () {
+    armRight.src = "img/clickedArmRight.png";
+    httpRequest.open("GET", "/armRight", true);
+    httpRequest.send();
+})
+
+armRight.addEventListener("mouseup", function () {
+    armRight.src = "img/armRight.png";
+})
+
+armCatch.addEventListener("mousedown", function () {
+    if (isCatch == 0) {
+        armCatch.src = "img/clickedCatch.png";
+        httpRequest.open("GET", "/armCatch", true);
+        httpRequest.send();
+        isCatch = 1;
+    }
+    else {
+        armCatch.src = "img/catch.png";
+        httpRequest.open("GET", "/armRelease", true);
+        httpRequest.send();
+        isCatch = 0;
+    }
+})
+
 // 방향키 이벤트
 document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
@@ -71,6 +134,41 @@ function keyDownHandler(e) {
             httpRequest.open("GET", "/down", true);
             httpRequest.send();
             break;
+
+        case 87: // w
+            armUp.src = "img/clickedArmUp.png";
+            httpRequest.open("GET", "/armUp", true);
+            httpRequest.send();
+            break;
+        case 65: // a
+            armLeft.src = "img/clickedArmLeft.png";
+            httpRequest.open("GET", "/armLeft", true);
+            httpRequest.send();
+            break;
+        case 83: // s
+            armDown.src = "img/clickedArmDown.png";
+            httpRequest.open("GET", "/armDown", true);
+            httpRequest.send();
+            break;
+        case 68: // d
+            armRight.src = "img/clickedArmRight.png";
+            httpRequest.open("GET", "/armRight", true);
+            httpRequest.send();
+            break;
+        case 32: // spacebar
+            if (isCatch == 0) {
+                armCatch.src = "img/clickedCatch.png";
+                httpRequest.open("GET", "/armCatch", true);
+                httpRequest.send();
+                isCatch = 1;
+            }
+            else {
+                armCatch.src = "img/catch.png";
+                httpRequest.open("GET", "/armRelease", true);
+                httpRequest.send();
+                isCatch = 0;
+            }
+            break;
     }
 }
 
@@ -87,6 +185,18 @@ function keyUpHandler(e) {
             break;
         case 40:
             downArrow.src = "img/downArrow.png";
+            break;
+        case 87: // w
+            armUp.src = "img/armUp.png";
+            break;
+        case 65: // a
+            armLeft.src = "img/armLeft.png";
+            break;
+        case 83: // s
+            armDown.src = "img/armDown.png";
+            break;
+        case 68: // d
+            armRight.src = "img/armRight.png";
             break;
     }
 }

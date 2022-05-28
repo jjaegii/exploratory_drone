@@ -1,28 +1,92 @@
+body {
+    background-color: gray;
+}
+
 #cam {
     position: relative;
-    left: 30px;
-    top: 20px;
+    left: 100px;
+    top: 70px;
     border-radius: 20px;
+    transform: scaleY(-1);
 }
 
 #gps {
     font-family: 'Jua', sans-serif;
-    font-size: 50px;
+    font-size: 30px;
     position: relative;
-    bottom: 400px;
-    left: 890px;
-    width: 350px;
+    bottom: 470px;
+    left: 1000px;
+    width:200px;
+    height: 70px;
     border: 10px solid;
+    background-color: white;
 }
 
 #arrowBox {
-    position:relative;
-    left:850px;
-    bottom:250px;
+    position: relative;
+    left: 830px;
+    bottom: -100px;
+    
+}
+
+.arrow {
+    height: 100px;
+    width: 100px;
 }
 
 #upArrow {
     position: relative;
-    bottom:100px;
-    left:200px;
+    bottom: 90px;
+    left: 210px;
+}
+
+#downArrow {
+    position: relative;
+    top: 90px;
+}
+
+#armBox {
+    position: relative;
+    left: 100px;
+    top: 20px;
+}
+
+.arm {
+    height: 100px;
+    width: 100px;
+}
+
+#armUp {
+    position: relative;
+    left: 210px;
+    bottom: 100px;
+}
+
+#armDown {
+    position: relative;
+    top: 100px;
+}
+
+#armCatch {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    right: 210px;
+}
+
+#googleMap {
+    position: relative;
+    left: 850px;
+    bottom: 690px;
+}
+
+#distance {
+    font-family: 'Jua', sans-serif;
+    font-size: 20px;
+    position: relative;
+    bottom: 100px;
+    left: 600px;
+    width:200px;
+    border: 10px solid;
+    background-color: white;
 }
