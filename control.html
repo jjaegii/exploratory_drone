@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/control.css">
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
-<body style="overflow-x:hidden; overflow-y:auto;">
+<body style="overflow-x:hidden; overflow-y:hidden;">
     <img src="http://180.189.89.108:3333/?action=stream" id="cam"/>
     <div id="gps">
         x=36.5 y=72.5
@@ -19,6 +19,9 @@
         <img src="img/downArrow.png" id="downArrow">
         <img src="img/rightArrow.png" id="rightArrow">
     </div>
+    <div id="googleMap" style="width: 500px;height: 400px;"></div>
     <script src="js/control.js"></script>
+    <script src="js/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSPjTB-jJbI4i08sfzOUMpDXO2Jm1N4nY&callback=myMap"></script>
 </body>
 </html>

@@ -7,22 +7,28 @@
 
 #gps {
     font-family: 'Jua', sans-serif;
-    font-size: 50px;
+    font-size: 30px;
     position: relative;
-    bottom: 400px;
-    left: 890px;
-    width: 350px;
+    bottom: 470px;
+    left: 1000px;
+    width:200px;
     border: 10px solid;
 }
 
 #arrowBox {
-    position:relative;
-    left:850px;
-    bottom:250px;
+    position: relative;
+    left: 850px;
+    bottom: -100px;
 }
 
 #upArrow {
     position: relative;
-    bottom:100px;
-    left:200px;
+    bottom: 100px;
+    left: 200px;
+}
+
+#googleMap {
+    position: relative;
+    left: 850px;
+    bottom: 550px;
 }
