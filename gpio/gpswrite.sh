@@ -1,5 +1,5 @@
 #!/bin/bash
-python gps.py > xy.txt
-value=$(<xy.txt)
+python /home/pi/nodejs/gpio/gps.py > /home/pi/nodejs/gpio/xy.txt
+value=$(</home/pi/nodejs/gpio/xy.txt)
 result="${value%%end*}"
-echo $result > xy.txt
+echo $result > /home/pi/nodejs/gpio/xy.txt
