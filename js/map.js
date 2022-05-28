@@ -9,4 +9,4 @@ function myMap(){
       var map = new google.maps.Map(document.getElementById("googleMap") 
             , mapOptions );
       
-   }
+}
