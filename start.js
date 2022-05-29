@@ -58,17 +58,25 @@ app.get('/distance', (req,res) => {
 })
 
 app.get("/up", (req,res) => {
-	exec('python3 ./gpio/led_on.py on');
+	exec('python3 ./gpio/move.py go');
 });
 
 app.get("/down", (req,res) => {
-	exec('python3 ./gpio/led_on.py off');
+	exec('python3 ./gpio/move.py back');
 });
 
 app.get("/left", (req,res) => {
-	exec('python3 ./gpio/servo.py 4');
+	exec('python3 ./gpio/move.py left');
 });
 
 app.get("/right", (req,res) => {
-	exec('python3 ./gpio/servo.py 11');
+	exec('python3 ./gpio/move.py right');
+});
+
+app.get("/ledOn", (req,res) => {
+	exec('python3 ./gpio/flash.py on');
+});
+
+app.get("/ledOff", (req,res) => {
+	exec('python3 ./gpio/flash.py off');
 });

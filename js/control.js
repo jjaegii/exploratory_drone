@@ -4,6 +4,8 @@ var upArrow = document.querySelector('#upArrow');
 var downArrow = document.querySelector('#downArrow');
 var leftArrow = document.querySelector('#leftArrow');
 var rightArrow = document.querySelector('#rightArrow');
+var led = document.querySelector('#led');
+var isOn = 0; // 1이면 ledon인 상태, 0이면 ledoff인 상태
 
 var armUp = document.querySelector("#armUp");
 var armDown = document.querySelector("#armDown");
@@ -51,6 +53,21 @@ rightArrow.addEventListener("mousedown", function () {
 
 rightArrow.addEventListener("mouseup", function () {
     rightArrow.src = "img/rightArrow.png";
+})
+
+led.addEventListener("mousedown", function () {
+    if (isOn == 0) {
+        led.src = "img/clickedLed.png";
+        httpRequest.open("GET", "/ledOn", true);
+        httpRequest.send();
+        isOn = 1;
+    }
+    else {
+        led.src = "img/led.png";
+        httpRequest.open("GET", "/ledOff", true);
+        httpRequest.send();
+        isOn = 0;
+    }
 })
 
 armUp.addEventListener("mousedown", function () {
@@ -134,7 +151,20 @@ function keyDownHandler(e) {
             httpRequest.open("GET", "/down", true);
             httpRequest.send();
             break;
-
+        case 70: // f
+            if (isOn == 0) {
+                led.src = "img/clickedLed.png";
+                httpRequest.open("GET", "/ledOn", true);
+                httpRequest.send();
+                isOn = 1;
+            }
+            else {
+                led.src = "img/led.png";
+                httpRequest.open("GET", "/ledOff", true);
+                httpRequest.send();
+                isOn = 0;
+            }
+            break;
         case 87: // w
             armUp.src = "img/clickedArmUp.png";
             httpRequest.open("GET", "/armUp", true);
