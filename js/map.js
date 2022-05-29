@@ -5,39 +5,39 @@ function myMap() {
       xhr.open('GET', '/gps', true);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.send();
-  
-      xhr.addEventListener('load', function() {
-          console.log(xhr.responseText);
-          gps.innerHTML = xhr.responseText;
+
+      xhr.addEventListener('load', function () {
+            console.log("responseText : " + xhr.responseText);
+            if (xhr.responseText == "") {
+                  gps.innerHTML = "35.83063 128.75475";
+            }
+            else {
+                  gps.innerHTML = xhr.responseText;
+            }
       })
       let tmp = gps.innerHTML;
-      let xarr = tmp.split(" ");
-      let yarr = xarr[1].split("\n");
-      
-      let x = parseFloat(xarr[0]);
-      let y = parseFloat(yarr[0]);
+      let arr = tmp.split(" ");
+      console.log("arr : " + arr);
+
+      let x = parseFloat(arr[0]);
+      let y = parseFloat(arr[1]);
       console.log("x : " + x);
       console.log("y : " + y)
-      if(x === undefined || y === undefined) {
-            var mapOptions = {
-                  center: new google.maps.LatLng(35.83063, 128.75475),
-                  zoom: 18,
-                  disableDefaultUI: true,
-                  mapTypeId: google.maps.MapTypeId.HYBRID
-              };
-            gps.innerHTML = "35.83063, 128.75475";
+      if (isNaN(x) || isNaN(y)) {
+            var coordinates = new google.maps.LatLng(35.83063, 128.75475);
       }
       else {
-            var mapOptions = {
-                  center: new google.maps.LatLng(x, y),
-                  zoom: 18,
-                  disableDefaultUI: true,
-                  mapTypeId: google.maps.MapTypeId.HYBRID
-              };
+            var coordinates = new google.maps.LatLng(x, y);
       }
+      var mapOptions = {
+            center: coordinates,
+            zoom: 18,
+            disableDefaultUI: true,
+            mapTypeId: google.maps.MapTypeId.HYBRID
+      };
+      let map = new google.maps.Map(document.getElementById("googleMap"), mapOptions);
+      let marker = new google.maps.Marker({ position: coordinates, map: map });
+      marker.setMap(map);
+}
 
-      let map = new google.maps.Map(document.getElementById("googleMap")
-      , mapOptions);
-  }
-  
-  setInterval(myMap, 10000);
+setInterval(myMap, 10000);
