@@ -5,7 +5,6 @@ var url = require('url');
 var exec = require('child_process').exec;
 const port = 3000;
 
-app.set('view engine', 'ejs');
 app.use(express.static(__dirname));
 app.locals.pretty = true;
 app.listen(3000, () => {
@@ -24,7 +23,10 @@ app.get("/", (req,res) => {
 
 var i = 0;
 app.get("/control", (req,res) => {
-	res.render('control.ejs', {'gpsvalue' : '35.83063 128.75475', 'distancevalue' : 'Distance = 0 cm'})
+	fs.readFile('control.html', (error, data) => {
+		res.writeHead(200, {'Content-Type' : 'text/html; charset=utf-8'});
+		res.end(data);
+	})
 });
 
 app.get('/gps', (req,res) => {
@@ -56,17 +58,25 @@ app.get('/distance', (req,res) => {
 })
 
 app.get("/up", (req,res) => {
-	exec('python3 ./gpio/led_on.py on');
+	exec('python3 ./gpio/move.py go');
 });
 
 app.get("/down", (req,res) => {
-	exec('python3 ./gpio/led_on.py off');
+	exec('python3 ./gpio/move.py back');
 });
 
 app.get("/left", (req,res) => {
-	exec('python3 ./gpio/servo.py 4');
+	exec('python3 ./gpio/move.py left');
 });
 
 app.get("/right", (req,res) => {
-	exec('python3 ./gpio/servo.py 11');
+	exec('python3 ./gpio/move.py right');
+});
+
+app.get("/ledOn", (req,res) => {
+	exec('python3 ./gpio/flash.py on');
+});
+
+app.get("/ledOff", (req,res) => {
+	exec('python3 ./gpio/flash.py off');
 });
