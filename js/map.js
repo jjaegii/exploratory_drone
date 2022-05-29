@@ -1,3 +1,6 @@
+var beforeX = parseFloat("35.83063");
+var beforeY = parseFloat("128.75474");
+
 function myMap() {
       const xhr = new XMLHttpRequest(); // XMLHttpRequest 인스턴스의 open(), send() 메서드를 사용하기 위해 인스턴스를 생성한다.
       var gps = document.querySelector("#gps");
@@ -9,7 +12,7 @@ function myMap() {
       xhr.addEventListener('load', function () {
             console.log("responseText : " + xhr.responseText);
             if (xhr.responseText == "") {
-                  gps.innerHTML = "35.83063 128.75475";
+                  gps.innerHTML = beforeX + " " + beforeY;
             }
             else {
                   gps.innerHTML = xhr.responseText;
@@ -24,10 +27,13 @@ function myMap() {
       console.log("x : " + x);
       console.log("y : " + y)
       if (isNaN(x) || isNaN(y)) {
-            var coordinates = new google.maps.LatLng(35.83063, 128.75475);
+            var coordinates = new google.maps.LatLng(beforeX, beforeY);
       }
       else {
             var coordinates = new google.maps.LatLng(x, y);
+            console.log("beforeX : " + beforeX + " beforeY : " + beforeY);
+            beforeX = x;
+            beforeY = y;
       }
       var mapOptions = {
             center: coordinates,
