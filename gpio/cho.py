@@ -31,11 +31,11 @@ time_interval = stop - start
 distance = time_interval * 17000
 distance = round(distance, 2)
 
-data = {
-    'distance': distance
-}
-with open('dis.json','w') as f:
-    json.dump(data,f)
+#data = {
+#    'distance': distance
+#}
+#with open('dis.json','w') as f:
+#    json.dump(data,f)
     
 print("Distance => ", distance, "cm")
 
