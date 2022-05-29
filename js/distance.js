@@ -6,7 +6,7 @@ function distance() {
     xhr.send();
 
     xhr.addEventListener('load', function() {
-        console.log(xhr.responseText);
+        //console.log(xhr.responseText);
         document.querySelector('#distance').innerHTML = xhr.responseText;
     })
 }
