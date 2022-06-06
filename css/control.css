@@ -7,7 +7,7 @@ body {
     left: 100px;
     top: 70px;
     border-radius: 20px;
-    transform: scaleY(-1);
+    transform: scaleX(-1);
 }
 
 #gps {
@@ -92,6 +92,7 @@ body {
     bottom: 230px;
     left: 520px;
     width:200px;
+    height: 30px;
     border: 10px solid;
     background-color: white;
 }

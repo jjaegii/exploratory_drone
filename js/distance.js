@@ -11,4 +11,4 @@ function distance() {
     })
 }
 
-setInterval(distance, 3000);
+setInterval(distance, 1000);
