@@ -111,17 +111,17 @@ armRight.addEventListener("mouseup", function () {
 })
 
 armCatch.addEventListener("mousedown", function () {
-    if (isCatch == 0) {
+    if (isCatch == 1) {
         armCatch.src = "img/clickedCatch.png";
         httpRequest.open("GET", "/armCatch", true);
         httpRequest.send();
-        isCatch = 1;
+        isCatch = 0;
     }
     else {
         armCatch.src = "img/catch.png";
         httpRequest.open("GET", "/armRelease", true);
         httpRequest.send();
-        isCatch = 0;
+        isCatch = 1;
     }
 })
 
@@ -186,17 +186,17 @@ function keyDownHandler(e) {
             httpRequest.send();
             break;
         case 32: // spacebar
-            if (isCatch == 0) {
+            if (isCatch == 1) {
                 armCatch.src = "img/clickedCatch.png";
                 httpRequest.open("GET", "/armCatch", true);
                 httpRequest.send();
-                isCatch = 1;
+                isCatch = 0;
             }
             else {
                 armCatch.src = "img/catch.png";
                 httpRequest.open("GET", "/armRelease", true);
                 httpRequest.send();
-                isCatch = 0;
+                isCatch = 1;
             }
             break;
     }

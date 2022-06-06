@@ -8,6 +8,7 @@ const port = 3000;
 app.use(express.static(__dirname));
 app.locals.pretty = true;
 app.listen(3000, () => {
+	exec('./gpio/chowhile.sh');
 	console.log("Server has been started");
 })
 
@@ -21,7 +22,6 @@ app.get("/", (req,res) => {
 	res.redirect('control');
 });
 
-var i = 0;
 app.get("/control", (req,res) => {
 	fs.readFile('control.html', (error, data) => {
 		res.writeHead(200, {'Content-Type' : 'text/html; charset=utf-8'});
@@ -45,7 +45,7 @@ app.get('/gps', (req,res) => {
 
 app.get('/distance', (req,res) => {
 	let writedistance = new Promise(function(resolve, reject) {
-		exec('./gpio/chowrite.sh');
+		//exec('./gpio/chowrite.sh');
 		resolve();
 	}).then(function() {
 		fs.readFile('./gpio/distance.txt', 'utf8', (error,data) => {
@@ -79,4 +79,28 @@ app.get("/ledOn", (req,res) => {
 
 app.get("/ledOff", (req,res) => {
 	exec('python3 ./gpio/flash.py off');
+});
+
+app.get("/armUp", (req,res) => {
+	exec('python3 ./gpio/arm.py up');
+});
+
+app.get("/armLeft", (req,res) => {
+	exec('python3 ./gpio/arm.py left');
+});
+
+app.get("/armDown", (req,res) => {
+	exec('python3 ./gpio/arm.py down');
+});
+
+app.get("/armRight", (req,res) => {
+	exec('python3 ./gpio/arm.py right');
+});
+
+app.get("/armCatch", (req,res) => {
+	exec('python3 ./gpio/arm.py close');
+});
+
+app.get("/armRelease", (req,res) => {
+	exec('python3 ./gpio/arm.py open');
 });
