@@ -6,22 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control</title>
+    <!-- css 파일 참조 -->
     <link rel="stylesheet" href="css/control.css">
+    <!-- 폰트 참조 -->
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 </head>
 
 <body style="overflow-x:hidden; overflow-y:hidden;">
-    <img src="http://192.168.137.193:3333/?action=stream" id="cam" />
+    <!-- mjpg.sh을 실행하여 출력되는 카메라 화면  -->
+    <img src="http://localhost:3333/?action=stream" id="cam" />
+
+    <!-- gps 좌표 값 출력 -->
     <div id="gps">
-        35.83063 128.75475
+        0.00000 0.00000
     </div>
+
+    <!-- 이동 부분 -->
     <div id="arrowBox">
         <img src="img/upArrow.png" id="upArrow" class="arrow">
         <img src="img/leftArrow.png" id="leftArrow" class="arrow">
         <img src="img/downArrow.png" id="downArrow" class="arrow">
         <img src="img/rightArrow.png" id="rightArrow" class="arrow">
+        <!-- 플래시라이트 -->
         <img src="img/led.png" id="led" class="arrow">
     </div>
+
+    <!-- 기계 팔 조작 부분 -->
     <div id="armBox">
         <img src="img/armUp.png" id="armUp" class="arm">
         <img src="img/armLeft.png" id="armLeft" class="arm">
@@ -30,14 +40,24 @@
         <img src="img/clickedCatch.png" id="armCatch">
     </div>
 
+    <!-- 거리 값 출력 -->
     <div id="distance">
         distance => 0 cm
     </div>
 
+    <!-- 좌표 값 기반한 지도 불러오기 -->
     <div id="googleMap" style="width: 500px;height: 400px;"></div>
+
+    <!-- 동작 부분 js 파일 참조 -->
     <script src="js/control.js"></script>
+
+    <!-- 지도 부분 js 파일 참조 -->
     <script src="js/map.js"></script>
-    <script src="js/distance.js"></script>t
+
+    <!-- 거리 측정 부분 js 파일 참조 -->
+    <script src="js/distance.js"></script>
+
+    <!-- 지도 api -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSPjTB-jJbI4i08sfzOUMpDXO2Jm1N4nY&callback=myMap"></script>
 </body>
 
