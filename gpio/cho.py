@@ -2,16 +2,13 @@ import RPi.GPIO as GPIO
 import time
 import json
 
-#print("AkibaTV HC-SR04 Start")
-
 GPIO.setmode(GPIO.BCM)
-# Yellow : Pin 11 : 17(Trig)
+# Pin 11 : 17(Trig)
 GPIO.setup(17, GPIO.OUT)
-# White : Pin 12 : 18(Echo)
+# Pin 12 : 18(Echo)
 GPIO.setup(18, GPIO.IN)
 
-#try:
-GPIO.output(17, False)
+GPIO.output(17, False)  # 초기세팅
 time.sleep(0.5)
 
 GPIO.output(17, True)
@@ -31,14 +28,7 @@ time_interval = stop - start
 distance = time_interval * 17000
 distance = round(distance, 2)
 
-#data = {
-#    'distance': distance
-#}
-#with open('dis.json','w') as f:
-#    json.dump(data,f)
     
-print("Distance => ", distance, "cm")
+print("Distance => ", distance, "cm")  # 결과값 출력
 
-#except KeyboardInterrupt:
-GPIO.cleanup()
-#print("AkibaTV HC-SR04 End")
+GPIO.cleanup()  # 할당 해제
